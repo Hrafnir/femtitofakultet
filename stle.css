@@ -1,17 +1,19 @@
-/* Version: #2 */
+/* Version: #5 */
 
 :root {
-    --primary-color: #2c3e50;
-    --accent-color: #3498db;
+    --primary-color: #ecf0f1; /* Lys tekst for mørk bakgrunn */
+    --accent-color: #2ecc71; /* Neongrønn */
+    --accent-glow: 0 0 10px rgba(46, 204, 113, 0.7);
     --success-color: #27ae60;
     --error-color: #e74c3c;
-    --bg-color: #f4f7f6;
-    --card-bg: #ffffff;
-    --text-color: #333;
+    --bg-color: #1a1d21; /* Mørk bakgrunn */
+    --card-bg: #2c3e50; /* Litt lysere mørk for kortene */
+    --text-color: #ecf0f1;
+    --panel-bg: #24282d;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -20,129 +22,204 @@ body {
 }
 
 #app-container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: var(--panel-bg);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid #333;
 }
 
 header {
     text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px solid var(--bg-color);
-    padding-bottom: 20px;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 25px;
 }
 
-h1 { color: var(--primary-color); margin-bottom: 5px; }
+h1 { 
+    color: var(--accent-color); 
+    margin-bottom: 10px; 
+    font-weight: 800; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: var(--accent-glow);
+}
+
+h2, h3 { color: var(--primary-color); }
 
 /* Kontrollpanel */
 #controls {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
 }
 
 button {
-    padding: 12px 20px;
-    font-size: 1rem;
+    padding: 14px 24px;
+    font-size: 1.1rem;
     cursor: pointer;
-    border: none;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-#shuffle-once-btn { background-color: var(--accent-color); color: white; }
-#start-simulation-btn { background-color: var(--success-color); color: white; }
-#stop-simulation-btn { background-color: var(--error-color); color: white; }
-#reset-btn { background-color: #95a5a6; color: white; }
+#shuffle-once-btn { 
+    background-color: transparent; 
+    color: var(--accent-color); 
+    border-color: var(--accent-color);
+}
+#shuffle-once-btn:hover { background-color: rgba(46, 204, 113, 0.1); box-shadow: var(--accent-glow); }
 
-button:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
-button:disabled { opacity: 0.5; cursor: not-allowed; }
+#start-simulation-btn { 
+    background-color: var(--success-color); 
+    color: white; 
+}
+#start-simulation-btn:hover { background-color: #219150; box-shadow: 0 0 15px rgba(39, 174, 96, 0.6); }
+
+#stop-simulation-btn { 
+    background-color: var(--error-color); 
+    color: white; 
+}
+#stop-simulation-btn:hover { background-color: #c0392b; box-shadow: 0 0 15px rgba(231, 76, 60, 0.6); }
+
+#reset-btn { 
+    background-color: transparent; 
+    color: #95a5a6; 
+    border-color: #95a5a6;
+}
+#reset-btn:hover { background-color: rgba(149, 165, 166, 0.1); }
+
+button:hover:not(:disabled) { transform: translateY(-2px); }
+button:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
 
 /* Statistikk */
 #stats-dashboard {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
 }
 
 .stat-card {
-    background: var(--bg-color);
-    padding: 20px;
-    border-radius: 8px;
+    background: #1e2226;
+    padding: 25px;
+    border-radius: 12px;
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid #333;
+    transition: border-color 0.3s ease;
 }
 
-.stat-card h3 { margin-top: 0; font-size: 0.9rem; text-transform: uppercase; color: #7f8c8d; }
-.stat-card p { font-size: 1.8rem; font-weight: bold; margin: 10px 0 0 0; color: var(--primary-color); }
+.stat-card:hover { border-color: var(--accent-color); }
 
-.highlight-error { color: var(--error-color) !important; }
+.stat-card h3 { 
+    margin-top: 0; 
+    font-size: 1rem; 
+    text-transform: uppercase; 
+    color: #888; 
+    letter-spacing: 1px;
+}
+
+.stat-card p { 
+    font-size: 2.5rem; 
+    font-weight: 800; 
+    margin: 15px 0 0 0; 
+    color: var(--accent-color); 
+    text-shadow: var(--accent-glow);
+    font-family: 'Courier New', Courier, monospace; /* Monospace for tall */
+}
+
+/* Animasjon for tall som oppdateres */
+@keyframes numberUpdate {
+    0% { text-shadow: var(--accent-glow); transform: scale(1); }
+    50% { text-shadow: 0 0 20px rgba(46, 204, 113, 1); transform: scale(1.05); }
+    100% { text-shadow: var(--accent-glow); transform: scale(1); }
+}
+
+.stat-card p.updating {
+    animation: numberUpdate 0.1s ease-in-out;
+}
+
+.highlight-error { color: var(--error-color) !important; text-shadow: 0 0 10px rgba(231, 76, 60, 0.7) !important; }
 
 /* Kort-visualisering */
 .deck-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    gap: 8px;
-    margin-top: 20px;
-    min-height: 200px;
-    padding: 15px;
-    background: #ecf0f1;
-    border-radius: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 10px;
+    margin-top: 25px;
+    min-height: 250px;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    border: 1px solid #333;
 }
 
 .card-mini {
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 5px;
+    background: var(--card-bg);
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 8px;
     text-align: center;
-    font-weight: bold;
-    font-size: 0.8rem;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    animation: popIn 0.3s ease-out;
+    font-weight: 800;
+    font-size: 1rem;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card-red { color: var(--error-color); }
-.card-black { color: #000; }
+.card-mini:hover {
+    transform: translateY(-3px);
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    border-color: #555;
+}
+
+/* "Glossy" effekt på kortene */
+.card-mini::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.card-red { color: var(--error-color); text-shadow: 0 0 5px rgba(231, 76, 60, 0.4); }
+.card-black { color: #fff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.4); }
 
 /* Teoretisk info */
 #math-info {
-    margin-top: 40px;
-    padding: 20px;
-    background: #e8f4fd;
+    margin-top: 50px;
+    padding: 25px;
+    background: #1e2226;
     border-left: 5px solid var(--accent-color);
-    border-radius: 4px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    border-left-width: 5px;
 }
 
 .math-formula {
     word-wrap: break-word;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    background: white;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #d0e4f5;
-}
-
-@keyframes popIn {
-    0% { transform: scale(0.8); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    background: rgba(0,0,0,0.3);
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    color: var(--accent-color);
+    margin: 15px 0;
+    font-size: 0.95rem;
 }
 
 /* === UTVIDELSER === */
-/* Logg-indikasjon i CSS */
-.log-pulse { animation: pulse 0.5s infinite; }
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.7; }
-    100% { opacity: 1; }
-}
+hr { border: 0; border-top: 2px solid #333; margin: 40px 0; }
 
-/* Version: #2 */
+/* Version: #5 */
