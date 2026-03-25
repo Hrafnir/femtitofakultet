@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kortstokk Sannsynlighet - 52!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app-container">
+        <header>
+            <h1>Sannsynligheten for $52!$</h1>
+            <p>Kan vi klare å stokke to kortstokker helt likt?</p>
+        </header>
+
+        <section id="controls">
+            <button id="shuffle-once-btn">Stokk én gang</button>
+            <button id="start-simulation-btn">Start hurtig-simulering</button>
+            <button id="stop-simulation-btn" disabled>Stopp</button>
+            <button id="reset-btn">Nullstill data</button>
+        </section>
+
+        <section id="stats-dashboard">
+            <div class="stat-card">
+                <h3>Antall forsøk</h3>
+                <p id="total-attempts">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Unike kombinasjoner</h3>
+                <p id="unique-combinations">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Duplikater funnet</h3>
+                <p id="duplicates-found" class="highlight-error">0</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="deck-display">
+            <h2>Nåværende rekkefølge</h2>
+            <div id="visual-deck" class="deck-grid">
+                </div>
+        </section>
+
+        <section id="math-info">
+            <h3>Visste du at?</h3>
+            <p>Antall mulige måter å stokke en kortstokk på er:</p>
+            <p class="math-formula">
+                80 658 175 170 943 878 571 660 636 856 403 766 975 289 505 440 883 277 824 000 000 000 000
+            </p>
+            <p>Dette er ca. $8,06 \times 10^{67}$. Sannsynligheten for at du har stokket en kortstokk likt som noen andre i verdenshistorien er praktisk talt null.</p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        console.log("[Index] Versjon #1 lastet. Venter på script.js...");
+    </script>
+</body>
+</html>
